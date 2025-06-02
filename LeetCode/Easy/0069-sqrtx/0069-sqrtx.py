@@ -1,11 +1,24 @@
 class Solution:
     def mySqrt(self, x: int) -> int:
+        if x < 2:
+            return x
 
-        val = sqrt(x)
-        result = 0
-        
-        while(val >= 1):
-            val -= 1
-            result += 1
+        left, right = 1 , x//2
+
+        while(left <= right):
+            mid = left + (right - left)//2
+            square = mid * mid
+
+            if x > square:
+                left = mid + 1
             
-        return result
+            elif x < square:
+                right = mid - 1
+
+            else:
+                return mid
+        
+        return right
+
+
+
